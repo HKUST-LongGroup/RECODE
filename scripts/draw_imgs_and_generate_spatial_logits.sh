@@ -1,0 +1,8 @@
+CUDA_VISIBLE_DEVICES=1 python -m torch.distributed.launch --master_port 10013 --nproc_per_node=1 tools/extract_proposal.py --config-file "configs/e2e_relation_X_101_32_8_FPN_1x_clip.yaml" MODEL.ROI_RELATION_HEAD.USE_GT_BOX True MODEL.ROI_RELATION_HEAD.USE_GT_OBJECT_LABEL True MODEL.ROI_RELATION_HEAD.PREDICTOR ClipPredictor SOLVER.IMS_PER_BATCH 1 TEST.IMS_PER_BATCH 1 DTYPE "float16" SOLVER.MAX_ITER 50000 SOLVER.VAL_PERIOD 2000 SOLVER.CHECKPOINT_PERIOD 2000 GLOVE_DIR glove MODEL.PRETRAINED_DETECTOR_CKPT checkpoints/pretrained_faster_rcnn/model_final.pth OUTPUT_DIR ./exp/clip_dev FEAT_DIR ./exp/vg/proposal DATASETS.TO_TEST 'test' TYPE 'extract_proposal' CLIP_MODEL_NAME ViT-B/32
+
+CUDA_VISIBLE_DEVICES=1 python -m torch.distributed.launch --master_port 10012 --nproc_per_node=1 tools/draw_img.py --config-file "configs/e2e_relation_X_101_32_8_FPN_1x_clip.yaml" GPT_DIR ./exp/vg PRO_DIR ./exp/vg/proposal FEAT_TYPE online SPATIAL_IMG_PATH ./exp/vg/spatial_imgs 
+
+
+CUDA_VISIBLE_DEVICES=1 python -m torch.distributed.launch --master_port 10012 --nproc_per_node=1 tools/judge_spatial.py --config-file "configs/e2e_relation_X_101_32_8_FPN_1x_clip.yaml" GPT_DIR ./exp/vg PRO_DIR ./exp/vg/proposal FEAT_TYPE online SPATIAL_IMG_PATH ./exp/vg/spatial_imgs PRO_DIR ./exp/vg/proposal CLIP_MODEL_NAME ViT-B/32
+
+CUDA_VISIBLE_DEVICES=1 python -m torch.distributed.launch --master_port 10012 --nproc_per_node=1 tools/generate_spatial_logits.py --config-file "configs/e2e_relation_X_101_32_8_FPN_1x_clip.yaml" GPT_DIR ./exp/vg PRO_DIR ./exp/vg/proposal FEAT_TYPE online SPATIAL_IMG_PATH ./exp/vg/spatial_imgs GPT_DES_PATH ./exp/vg/des_prompts.pth 
