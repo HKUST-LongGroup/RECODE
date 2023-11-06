@@ -135,7 +135,7 @@ def generate_aug_results(cfg, local_rank, distributed, logger, feat_path):
         mode = 'sgdet'
 
     clip_model_name = cfg.CLIP_MODEL_NAME.replace('/','_')
-    if not os.path.exists(feat_path + '/' + '{}_{}_clip_obj_feature_dict.pth'.format(clip_model_name, mode)):
+    if not os.path.exists(feat_path + '/' + '{}_clip_obj_feature_dict.pth'.format(clip_model_name)):
         results_dict = {}
         for _, batch in enumerate(tqdm(data_loaders_val[0])):
             with torch.no_grad():
@@ -144,7 +144,7 @@ def generate_aug_results(cfg, local_rank, distributed, logger, feat_path):
                 clip_obj_features = model(images.to(device), targets)
                 for image_id, clip_obj_feature in zip(image_ids, clip_obj_features):
                     results_dict[image_id] = clip_obj_feature
-        torch.save(results_dict, feat_path + '/' + '{}_{}_clip_obj_feature_dict.pth'.format(clip_model_name,mode))
+        torch.save(results_dict, feat_path + '/' + '{}_clip_obj_feature_dict.pth'.format(clip_model_name))
 
 def fix_eval_modules(eval_modules):
     for module in eval_modules:
