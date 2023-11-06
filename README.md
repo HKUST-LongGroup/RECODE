@@ -1,4 +1,4 @@
-# CFA for SGG in Pytorch
+# RECODE for SGG in Pytorch
 
 [![LICENSE](https://img.shields.io/badge/license-MIT-green)](https://github.com/KaihuaTang/Scene-Graph-Benchmark.pytorch/blob/master/LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9.7-blue.svg)](https://www.python.org/)
