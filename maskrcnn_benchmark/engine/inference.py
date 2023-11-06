@@ -46,7 +46,7 @@ def compute_on_dataset(model, data_loader, device, synchronize_gather=True, time
                         mode = 'sgdet'
                     
                     clip_model_name = cfg.CLIP_MODEL_NAME.replace('/','_')
-                    clip_obj_feature = torch.load(cfg.FEAT_DIR + '/' + '{}_{}_clip_obj_feature_dict.pth'.format(clip_model_name, mode), map_location=torch.device('cuda'))
+                    clip_obj_feature = torch.load(cfg.FEAT_DIR + '/' + '{}_clip_obj_feature_dict.pth'.format(clip_model_name), map_location=torch.device('cuda'))
                     box_proposals = torch.load(cfg.PRO_DIR + '/' + '{}_box_proposal_dict.pth'.format(clip_model_name), map_location=torch.device('cuda'))
                     spatial_infos = torch.load(cfg.PRO_DIR + '/' + '{}_spatial_name.pth'.format(clip_model_name), map_location=torch.device('cuda'))
                     obj_features = []
