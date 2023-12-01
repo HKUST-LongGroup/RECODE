@@ -138,11 +138,11 @@ class DatasetCatalog(object):
             "correct_file": "hico/corre_hico.npy"
         },
         "VCOCO":{
-            "train_img_dir": "datasets/hico/hico_20160224_det/images/train2015",
-            "test_img_dir": "datasets/hico/hico_20160224_det/images/test2015",
-            "train_file": "vcoco/trainval_hico.json",
-            "test_file": "vcoco/test_hico.json",
-            "correct_file": "vcoco/corre_hico.npy"
+            "train_img_dir": "datasets/mscoco/images/train2014",
+            "test_img_dir": "datasets/mscoco/images/val2014",
+            "train_file": "v-coco/annotations/trainval_vcoco.json",
+            "test_file": "v-coco/annotations/test_vcoco.json",
+            "correct_file": "v-coco/annotations/corre_vcoco.npy"
         },
     }
 
