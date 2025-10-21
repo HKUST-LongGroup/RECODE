@@ -34,6 +34,8 @@ bash scripts/infer.sh
 ## Generated Files
 We provide the extracted clip visual feature, visual cue descriptions, and some spatial information, you can download from [here*](https://mega.nz/folder/BFxGQIxL#H-aKabcI-FnBlLlEEpR0uQ).
 
+Due to the expiration of the previous cloud disk membership, the data has been cleared. The new link is as [here*](https://pan.baidu.com/s/10jh2zCtuqawTtuc1eq-iHg?pwd=sutp
+).
 ## Citations
 
 If you find this project helps your research, please kindly consider citing our paper in your publications.
